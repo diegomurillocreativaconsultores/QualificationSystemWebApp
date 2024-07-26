@@ -15,6 +15,9 @@ import { calcularPromedioCalificaciones } from "@/src/utils/calcularPromedioCali
 function CandidataName({ params: { id: id } }) {
     const router = useRouter();
 
+    const stage = JSON.parse(localStorage.getItem("stage"));
+
+    const [puntaje, setPuntaje] = React.useState(1);
     const [questions, setQuestions] = React.useState([]);
     const [candidateData, setCandidateData] = React.useState([]);
     const [snackbarState, setSnackbarState] = React.useState({});
@@ -65,7 +68,7 @@ function CandidataName({ params: { id: id } }) {
         let newCandidateData = {
             [`scorePhase${phase}U${userId}`]: {
                 "idUser": userId,
-                "score": calcularPromedioCalificaciones(questions)
+                "score": phase === 1 ? calcularPromedioCalificaciones(questions) : puntaje,
             },
         }
         updateDocument("participantes", id, newCandidateData, router, setSnackbarState)
@@ -90,19 +93,38 @@ function CandidataName({ params: { id: id } }) {
                 <section className="space-y-1">
                     {questions.map(question => (
                         <Question
+                            stage={stage}
                             key={question}
                             data={question}
                             onChangeRange={onChangeRange}
                         />
                     ))}
                 </section>
-                <section className="flex w-[34%] justify-end">
-                    <button
-                        onClick={onSubmitNewData}
-                        className="font-semibold text-bluebeauty bg-goldbeauty px-20 py-2 rounded-md duration-300 ease-in-out transition-all hover:bg-goldbeauty"
-                    >
-                        Publish
-                    </button>
+                <section className="flex w-[34%] justify-end items-center space-x-5">
+                    <div className="flex items-center space-x-3">
+                        <label>
+                            Puntaje:
+                        </label>
+                        <input
+                            type="range"
+                            min={1}
+                            max={10}
+                            value={puntaje}
+                            className="accent-goldbeauty"
+                            onChange={e => setPuntaje(e.target.value)}
+                        />
+                        <label htmlFor="">
+                            {puntaje}
+                        </label>
+                    </div>
+                    <div>
+                        <button
+                            onClick={onSubmitNewData}
+                            className="font-semibold text-bluebeauty bg-goldbeauty px-20 py-2 rounded-md duration-300 ease-in-out transition-all hover:bg-goldbeauty"
+                        >
+                            Publish
+                        </button>
+                    </div>
                 </section>
             </main>
         </ProtectedRoute>

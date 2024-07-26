@@ -2,7 +2,7 @@
 
 import React from "react";
 
-export const Question = ({ data, onChangeRange }) => {
+export const Question = ({ data, onChangeRange, stage }) => {
     const { id, phase, order, question, calificacion } = data;
 
     return (
@@ -12,24 +12,25 @@ export const Question = ({ data, onChangeRange }) => {
                     {order}. {question}
                 </p>
             </div>
-            <div className="flex space-x-5">
-                <input
-                    type="range"
-                    min={1}
-                    max={10}
-                    value={calificacion}
-                    className="accent-goldbeauty"
-                    onChange={e => onChangeRange(
-                        id,
-                        phase,
-                        order,
-                        e.target.value,
-                    )}
-                />
-                <label htmlFor="">
-                    {calificacion}
-                </label>
-            </div>
+            {(stage === 1) &&
+                (<div className="flex space-x-5">
+                    <input
+                        type="range"
+                        min={1}
+                        max={10}
+                        value={calificacion}
+                        className="accent-goldbeauty"
+                        onChange={e => onChangeRange(
+                            id,
+                            phase,
+                            order,
+                            e.target.value,
+                        )}
+                    />
+                    <label htmlFor="">
+                        {calificacion}
+                    </label>
+                </div>)}
         </div>
     );
 };
