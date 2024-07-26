@@ -9,11 +9,7 @@ import { sortByDistrict } from "@/src/utils/sortByDistrict";
 import ProtectedRoute from "@/components/interface/ProtectedRoute";
 import { capitalizeAndRemoveHyphens } from "@/src/utils/capitalizeAndRemoveHyphens";
 
-function CandidatasPage() {
-    const phase = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem("stage")) : null;
-    const userId = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem("id")) : null;
-
-    const [search, setSearch] = React.useState("");
+function AdminCandidatasPage() {
     const [candidatas, setCandidatas] = React.useState([]);
 
     React.useEffect(() => {
@@ -33,26 +29,19 @@ function CandidatasPage() {
         fetchDocuments();
     }, []);
 
+    const phase = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem("stage")) : null;
+    const userId = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem("id")) : null;
+
     console.log("candidatas", candidatas);
 
     return (
         <ProtectedRoute>
             <Header />
-            <main className="flex flex-col items-center justify-center p-10 space-y-5">
+            <main className="flex flex-col items-center justify-center p-5 space-y-5">
                 <section>
                     <h1 className="text-2xl font-semibold text-goldbeauty">
                         Candidatas a Reina de San Salvador Centro
                     </h1>
-                </section>
-                <section className="w-[52%]">
-                    <input
-                        id="searchbar"
-                        name="searchbar"
-                        value={search}
-                        onChange={e => setSearch(e.target.value)}
-                        placeholder="Busca una candidata..."
-                        className="border-2 border-gray-300 rounded-full w-full px-3 py-2 placeholder:font-light"
-                    />
                 </section>
                 <section className="space-y-3 w-[52%]">
                     <div className="grid grid-cols-3">
@@ -75,7 +64,6 @@ function CandidatasPage() {
                     <div className="space-y-0.5 h-[40rem] overflow-y-auto">
                         {candidatas
                             .filter(candidata => candidata?.phase === phase)
-                            .filter(candidata => candidata?.name.toLowerCase().includes(search.toLowerCase()))
                             .map(candidata => (
                                 <Link
                                     key={candidata?.id}
@@ -109,4 +97,4 @@ function CandidatasPage() {
     );
 }
 
-export default CandidatasPage
+export default AdminCandidatasPage
