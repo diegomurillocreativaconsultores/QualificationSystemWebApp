@@ -1,11 +1,34 @@
 "use client"
 
+import React from "react";
+import useAuth from "@/src/hooks/useAuth";
 import { Stage } from "@/components/home/Stage";
 import { FaArrowRightLong } from "react-icons/fa6";
+import { getDocument } from "@/src/services/firebase";
 import { Header } from "@/components/interface/Header";
 import ProtectedRoute from "@/components/interface/ProtectedRoute";
 
 export default function Home() {
+  const { user } = useAuth();
+
+  const [role, setRole] = React.useState("");
+  const [actualPhase, setActualPhase] = React.useState(0);
+
+  React.useEffect(() => {
+    if (
+      (user !== null) &&
+      (user !== undefined)
+    ) {
+      getDocument("users", user?.uid, setRole)
+    }
+  }, [user]);
+
+  React.useEffect(() => { getDocument("params", "main", setActualPhase) }, []);
+
+  React.useEffect(() => localStorage.setItem("role", role.role), [role]);
+
+  const phase = actualPhase.phase;
+
   return (
     <ProtectedRoute>
       <Header />
@@ -14,9 +37,9 @@ export default function Home() {
           Elección de Reina de San Salvador Centro
         </h1>
         <section className="flex items-center justify-center space-x-10">
-          <Stage stageName="Fase 1" />
+          <Stage stageName="Fase 1" isDisable={phase === 2} />
           <FaArrowRightLong size={100} />
-          <Stage stageName="Fase 2" isDisable />
+          <Stage stageName="Fase 2" isDisable={phase === 1} />
         </section>
       </main>
     </ProtectedRoute>

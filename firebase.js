@@ -5,6 +5,7 @@ import {
     onAuthStateChanged as _onAuthStateChanged,
 } from "firebase/auth";
 import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
     apiKey: "AIzaSyAM-WGzpX5Qwl1h6l_RRaJqda892R0xTSg",
@@ -19,6 +20,10 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 const auth = getAuth(app);
+
+const db = getFirestore(app);
+
+export { app, auth, db };
 
 export function onAuthStateChanged(cb) {
     return _onAuthStateChanged(auth, cb);
@@ -77,5 +82,3 @@ export async function signOut() {
         console.error("Error signing out", error);
     }
 }
-
-export { app, auth };
