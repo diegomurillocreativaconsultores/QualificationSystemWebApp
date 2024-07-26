@@ -30,8 +30,6 @@ function CandidatasPage() {
         fetchDocuments();
     }, []);
 
-    console.log("candidatas", candidatas);
-
     return (
         <ProtectedRoute>
             <Header />
@@ -74,7 +72,7 @@ function CandidatasPage() {
                             .filter(candidata => candidata?.name.toLowerCase().includes(search.toLowerCase()))
                             .map(candidata => (
                                 <Link
-                                    href={`/candidata/${candidata?.name}`}
+                                    href={`/candidata/${candidata?.id}`}
                                     className="border-2 border-bluebeauty px-3 py-2 grid grid-cols-3 rounded hover:bg-blue-100 text-sm duration-100 ease-in-out transition-all"
                                 >
                                     <div>

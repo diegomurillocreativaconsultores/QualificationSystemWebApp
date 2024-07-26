@@ -25,7 +25,11 @@ export default function Home() {
 
   React.useEffect(() => { getDocument("params", "main", setActualPhase) }, []);
 
-  React.useEffect(() => localStorage.setItem("role", role.role), [role]);
+  React.useEffect(() => {
+    localStorage.setItem("id", role.id)
+    localStorage.setItem("role", role.role);
+    localStorage.setItem("stage", actualPhase.phase);
+  }, [role]);
 
   const phase = actualPhase.phase;
 
