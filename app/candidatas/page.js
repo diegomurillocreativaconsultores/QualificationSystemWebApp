@@ -30,6 +30,11 @@ function CandidatasPage() {
         fetchDocuments();
     }, []);
 
+    const phase = JSON.parse(localStorage.getItem("stage"));
+    const userId = JSON.parse(localStorage.getItem("id"));
+
+    console.log("candidatas", candidatas);
+
     return (
         <ProtectedRoute>
             <Header />
@@ -73,8 +78,11 @@ function CandidatasPage() {
                             .map(candidata => (
                                 <Link
                                     key={candidata?.id}
-                                    href={`/candidata/${candidata?.id}`}
-                                    className="border-2 border-bluebeauty px-3 py-2 grid grid-cols-3 rounded hover:bg-blue-100 text-sm duration-100 ease-in-out transition-all"
+                                    href={candidata?.[`scorePhase${phase}U${userId}`]?.score > 0 ? "" : `/candidata/${candidata?.id}`}
+                                    className={`
+                                        ${candidata?.[`scorePhase${phase}U${userId}`]?.score > 0 ? "cursor-default bg-green-100" : "hover:bg-blue-100"}
+                                        border-2 border-bluebeauty px-3 py-2 grid grid-cols-3 rounded text-sm duration-100 ease-in-out transition-all
+                                    `}
                                 >
                                     <div>
                                         <p>
@@ -88,7 +96,7 @@ function CandidatasPage() {
                                     </div>
                                     <div>
                                         <p className="text-right">
-                                            0
+                                            {candidata?.[`scorePhase${phase}U${userId}`]?.score > 0 ? candidata?.[`scorePhase${phase}U${userId}`]?.score : 0}
                                         </p>
                                     </div>
                                 </Link>
