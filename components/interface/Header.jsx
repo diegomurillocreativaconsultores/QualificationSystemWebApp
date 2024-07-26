@@ -1,3 +1,6 @@
+"use client"
+
+import Link from "next/link";
 import { signOut } from "@/firebase";
 import { TbLogout2 } from "react-icons/tb";
 
@@ -5,9 +8,12 @@ export const Header = () => {
     return (
         <header className="bg-blue-500 p-5 flex items-center justify-between">
             <section>
-                <p className="font-semibold text-white text-xl">
+                <Link
+                    href="/"
+                    className="font-semibold text-white text-xl"
+                >
                     Beauty Contest Qualification System
-                </p>
+                </Link>
             </section>
             <section>
                 <button

@@ -37,9 +37,23 @@ export default function Home() {
           Elección de Reina de San Salvador Centro
         </h1>
         <section className="flex items-center justify-center space-x-10">
-          <Stage stageName="Fase 1" isDisable={phase === 2} />
+          <Stage
+            stageName="Fase 1"
+            isDisable={phase !== 1}
+            href="/candidatas"
+          />
           <FaArrowRightLong size={100} />
-          <Stage stageName="Fase 2" isDisable={phase === 1} />
+          <Stage
+            stageName="Fase 2"
+            isDisable={phase !== 2}
+            href="/candidatas"
+          />
+          <FaArrowRightLong size={100} />
+          <Stage
+            stageName="Fase 3"
+            isDisable={phase !== 3}
+            href="/candidatas"
+          />
         </section>
       </main>
     </ProtectedRoute>
