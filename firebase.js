@@ -1,11 +1,11 @@
-// Import the functions you need from the SDKs you need
+import {
+    getAuth,
+    signOut as _signOut,
+    signInWithEmailAndPassword,
+    onAuthStateChanged as _onAuthStateChanged,
+} from "firebase/auth";
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
     apiKey: "AIzaSyAM-WGzpX5Qwl1h6l_RRaJqda892R0xTSg",
     authDomain: "jurados-creativa-studios.firebaseapp.com",
@@ -16,6 +16,66 @@ const firebaseConfig = {
     measurementId: "G-0J0F46H7LT"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+
+const auth = getAuth(app);
+
+export function onAuthStateChanged(cb) {
+    return _onAuthStateChanged(auth, cb);
+}
+
+export async function signInWithEmail(
+    email,
+    password,
+    setSnackbarState,
+) {
+    try {
+        await signInWithEmailAndPassword(auth, email, password)
+            .then(() => {
+                setSnackbarState({
+                    type: "success",
+                    state: true,
+                    message: "¡Inicio de sesion exitoso!",
+                })
+            })
+    } catch (error) {
+        if (
+            (email === "") &&
+            (password === "")
+        ) {
+            setSnackbarState({
+                type: "error",
+                state: true,
+                message: "Todos los campos son requeridos",
+            });
+        } else if (email === "") {
+            setSnackbarState({
+                type: "error",
+                state: true,
+                message: "El correo electrónico esta vacio",
+            });
+        } else if (password === "") {
+            setSnackbarState({
+                type: "error",
+                state: true,
+                message: "La contraseña esta vacia",
+            });
+        } else {
+            setSnackbarState({
+                type: "error",
+                state: true,
+                message: "Las credenciales son invalidas",
+            });
+        }
+    }
+}
+
+export async function signOut() {
+    try {
+        return _signOut(auth);
+    } catch (error) {
+        console.error("Error signing out", error);
+    }
+}
+
+export { app, auth };
