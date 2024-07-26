@@ -10,6 +10,7 @@ import ProtectedRoute from "@/components/interface/ProtectedRoute";
 import { capitalizeAndRemoveHyphens } from "@/src/utils/capitalizeAndRemoveHyphens";
 
 function CandidatasPage() {
+
     const [search, setSearch] = React.useState("");
     const [candidatas, setCandidatas] = React.useState([]);
 
@@ -74,6 +75,7 @@ function CandidatasPage() {
                     </div>
                     <div className="space-y-0.5 h-[40rem] overflow-y-auto">
                         {candidatas
+                            .filter(candidata => candidata?.phase === phase)
                             .filter(candidata => candidata?.name.toLowerCase().includes(search.toLowerCase()))
                             .map(candidata => (
                                 <Link
