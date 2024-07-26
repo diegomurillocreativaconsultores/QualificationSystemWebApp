@@ -46,10 +46,10 @@ function IniciarSesionPage() {
                     <h1 className="font-bold text-xl text-center">
                         Iniciar Sesion
                     </h1>
-                    <h2 className="font-bold text-xl text-center text-pink-500">
+                    <h2 className="font-bold text-xl text-center text-goldbeauty">
                         Beauty Contest Qualification System
                     </h2>
-                    <h3 className="font-bold text-xl text-center text-blue-500">
+                    <h3 className="font-bold text-xl text-center text-bluebeauty">
                         Elección de Reina de San Salvador Centro
                     </h3>
                     <div className="flex flex-col space-y-1">

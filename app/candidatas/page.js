@@ -37,7 +37,7 @@ function CandidatasPage() {
             <Header />
             <main className="flex flex-col items-center justify-center p-10 space-y-5">
                 <section>
-                    <h1 className="text-2xl font-semibold text-pink-500">
+                    <h1 className="text-2xl font-semibold text-goldbeauty">
                         Candidatas a Reina de San Salvador Centro
                     </h1>
                 </section>
@@ -75,7 +75,7 @@ function CandidatasPage() {
                             .map(candidata => (
                                 <Link
                                     href={`/candidata/${candidata?.name}`}
-                                    className="border-2 border-blue-300 px-3 py-2 grid grid-cols-3 rounded hover:bg-blue-100 text-sm duration-100 ease-in-out transition-all"
+                                    className="border-2 border-bluebeauty px-3 py-2 grid grid-cols-3 rounded hover:bg-blue-100 text-sm duration-100 ease-in-out transition-all"
                                 >
                                     <div>
                                         <p>

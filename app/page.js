@@ -33,7 +33,7 @@ export default function Home() {
     <ProtectedRoute>
       <Header />
       <main className="flex flex-col items-center justify-center p-40 space-y-20">
-        <h1 className="text-4xl font-semibold text-pink-500">
+        <h1 className="text-4xl font-semibold text-goldbeauty">
           Elección de Reina de San Salvador Centro
         </h1>
         <section className="flex items-center justify-center space-x-10">

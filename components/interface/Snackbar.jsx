@@ -41,7 +41,7 @@ export const Snackbar = React.memo(({ snackbar, setState }) => {
                     className={`
                         ${type === "warning" && "bg-yellow-500"}
                         ${type === "error" && "bg-red-500"}
-                        ${type === "info" && "bg-blue-500"}
+                        ${type === "info" && "bg-bluebeauty"}
                         ${type === "success" && "bg-green-500"}
                         font-semibold px-6 py-3 fixed z-[9999] bottom-5 left-5 bg-opacity-90 text-white text-base rounded-lg
                     `}

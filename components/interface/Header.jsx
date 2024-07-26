@@ -6,7 +6,7 @@ import { TbLogout2 } from "react-icons/tb";
 
 export const Header = () => {
     return (
-        <header className="bg-blue-500 p-5 flex items-center justify-between">
+        <header className="bg-bluebeauty p-5 flex items-center justify-between">
             <section>
                 <Link
                     href="/"
@@ -18,7 +18,7 @@ export const Header = () => {
             <section>
                 <button
                     onClick={signOut}
-                    className="text-white font-semibold flex items-center space-x-2 border-2 border-white px-2 py-1 rounded-md hover:bg-white hover:text-blue-500 duration-300e ease-in-out transition-all"
+                    className="text-white font-semibold flex items-center space-x-2 border-2 border-white px-2 py-1 rounded-md hover:bg-white hover:text-bluebeauty duration-300e ease-in-out transition-all"
                 >
                     <TbLogout2 size={25} />
                     <p>
