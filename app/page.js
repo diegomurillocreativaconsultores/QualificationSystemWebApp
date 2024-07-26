@@ -44,19 +44,19 @@ export default function Home() {
           <Stage
             stageName="Fase 1"
             isDisable={phase !== 1}
-            href="/candidatas"
+            href={role?.role === "jurado" ? "/candidatas" : "admin-candidatas"}
           />
           <FaArrowRightLong size={100} />
           <Stage
             stageName="Fase 2"
             isDisable={phase !== 2}
-            href="/candidatas"
+            href={role?.role === "jurado" ? "/candidatas" : "admin-candidatas"}
           />
           <FaArrowRightLong size={100} />
           <Stage
             stageName="Fase 3"
             isDisable={phase !== 3}
-            href="/candidatas"
+            href={role?.role === "jurado" ? "/candidatas" : "admin-candidatas"}
           />
         </section>
       </main>

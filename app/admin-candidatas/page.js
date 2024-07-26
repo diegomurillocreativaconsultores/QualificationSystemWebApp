@@ -85,7 +85,7 @@ function AdminCandidatasPage() {
                                     </div>
                                     <div>
                                         <p className="text-right">
-                                            {candidata?.[`scorePhase${phase}U${userId}`]?.score > 0 ? candidata?.[`scorePhase${phase}U${userId}`]?.score : 0}
+                                            
                                         </p>
                                     </div>
                                 </Link>
