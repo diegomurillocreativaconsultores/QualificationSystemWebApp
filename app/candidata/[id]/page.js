@@ -1,6 +1,7 @@
 "use client"
 
 import React from "react";
+import { useRouter } from "next/navigation";
 import { getDocument } from "@/src/services/firebase";
 import { Header } from "@/components/interface/Header";
 import { getDataTable } from "@/src/services/firebase";
@@ -12,6 +13,8 @@ import ProtectedRoute from "@/components/interface/ProtectedRoute";
 import { calcularPromedioCalificaciones } from "@/src/utils/calcularPromedioCalificaciones";
 
 function CandidataName({ params: { id: id } }) {
+    const router = useRouter();
+
     const [questions, setQuestions] = React.useState([]);
     const [candidateData, setCandidateData] = React.useState([]);
     const [snackbarState, setSnackbarState] = React.useState({});
@@ -65,7 +68,7 @@ function CandidataName({ params: { id: id } }) {
                 "score": calcularPromedioCalificaciones(questions)
             },
         }
-        updateDocument("participantes", id, newCandidateData, setSnackbarState)
+        updateDocument("participantes", id, newCandidateData, router, setSnackbarState)
     }
 
     return (
