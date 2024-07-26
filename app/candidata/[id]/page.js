@@ -87,6 +87,7 @@ function CandidataName({ params: { id: id } }) {
                 <section className="space-y-1">
                     {questions.map(question => (
                         <Question
+                            key={question}
                             data={question}
                             onChangeRange={onChangeRange}
                         />
