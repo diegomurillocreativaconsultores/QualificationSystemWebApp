@@ -101,22 +101,23 @@ function CandidataName({ params: { id: id } }) {
                     ))}
                 </section>
                 <section className="flex w-[34%] justify-end items-center space-x-5">
-                    <div className="flex items-center space-x-3">
-                        <label>
-                            Puntaje:
-                        </label>
-                        <input
-                            type="range"
-                            min={1}
-                            max={10}
-                            value={puntaje}
-                            className="accent-goldbeauty"
-                            onChange={e => setPuntaje(e.target.value)}
-                        />
-                        <label htmlFor="">
-                            {puntaje}
-                        </label>
-                    </div>
+                    {(stage !== 1) &&
+                        (<div className="flex items-center space-x-3">
+                            <label>
+                                Puntaje:
+                            </label>
+                            <input
+                                type="range"
+                                min={1}
+                                max={10}
+                                value={puntaje}
+                                className="accent-goldbeauty"
+                                onChange={e => setPuntaje(e.target.value)}
+                            />
+                            <label htmlFor="">
+                                {puntaje}
+                            </label>
+                        </div>)}
                     <div>
                         <button
                             onClick={onSubmitNewData}

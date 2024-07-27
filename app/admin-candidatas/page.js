@@ -5,7 +5,9 @@ import { db } from "@/firebase";
 import { GrPrint } from "react-icons/gr";
 import { useRouter } from "next/navigation";
 import { getProm } from "@/src/utils/getProm";
+import { TbArrowMoveRight } from "react-icons/tb";
 import { Header } from "@/components/interface/Header";
+import { moveToStage2 } from "@/src/utils/moveToStage2";
 import { collection, getDocs } from "firebase/firestore";
 import { sortByDistrict } from "@/src/utils/sortByDistrict";
 import ProtectedRoute from "@/components/interface/ProtectedRoute";
@@ -45,10 +47,27 @@ function AdminCandidatasPage() {
 
     console.log("candidatas", candidatas);
 
-    return (
-        <ProtectedRoute>
-            <Header otherComponent={
-                <button 
+    const ButtonToReturn = ({ phase }) => {
+        if (phase === 1) {
+            return (
+                <button
+                    onClick={() => { }}
+                    className="flex items-center justify-center space-x-2 border-2 border-white px-3 py-1 rounded-md bg-bluebeauty text-white duration-300 ease-in-out transition-all hover:bg-white hover:text-bluebeauty"
+                >
+                    <div>
+                        <TbArrowMoveRight size={25} />
+                    </div>
+                    <div>
+                        <p className="font-semibold">
+                            Mover a Fase 2
+                        </p>
+                    </div>
+                </button>
+            )
+        }
+        if (phase === 3) {
+            return (
+                <button
                     onClick={() => window.print()}
                     className="flex items-center justify-center space-x-2 border-2 border-white px-3 py-1 rounded-md bg-bluebeauty text-white duration-300 ease-in-out transition-all hover:bg-white hover:text-bluebeauty"
                 >
@@ -60,7 +79,15 @@ function AdminCandidatasPage() {
                             Imprimir
                         </p>
                     </div>
-                </button>} />
+                </button>
+            )
+        }
+        return <></>;
+    };
+
+    return (
+        <ProtectedRoute>
+            <Header otherComponent={<ButtonToReturn phase={phase} />} />
             <main className="flex flex-col items-center justify-center p-5 space-y-5">
                 <section>
                     <h1 className="text-2xl font-semibold text-goldbeauty">

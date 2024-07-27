@@ -2,9 +2,14 @@
 
 import Link from "next/link";
 import { signOut } from "@/firebase";
+import useAuth from "@/src/hooks/useAuth";
 import { TbLogout2 } from "react-icons/tb";
 
 export const Header = ({ otherComponent = <></> }) => {
+    const { user } = useAuth();
+
+    console.log(user);
+
     return (
         <header className="bg-bluebeauty p-5 flex items-center justify-between">
             <section>
