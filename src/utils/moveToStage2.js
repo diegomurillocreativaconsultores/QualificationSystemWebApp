@@ -1,3 +1,3 @@
-export const moveToStage2 = () => {
+export const moveToStage2 = (dataCandidatas) => {
     
 };

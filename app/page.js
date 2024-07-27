@@ -23,7 +23,7 @@ export default function Home() {
     }
   }, [user]);
 
-  React.useEffect(() => { getDocument("params", "main", setActualPhase) }, []);
+  React.useEffect(() => { getDocument("params", "main", setActualPhase) }, []); 
 
   React.useEffect(() => {
     localStorage.setItem("id", role.id)
