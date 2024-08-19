@@ -6,6 +6,7 @@ import { Stage } from "@/components/home/Stage";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { getDocument } from "@/src/services/firebase";
 import { Header } from "@/components/interface/Header";
+import { Footer } from "@/components/interface/Footer";
 import ProtectedRoute from "@/components/interface/ProtectedRoute";
 
 export default function Home() {
@@ -23,7 +24,7 @@ export default function Home() {
     }
   }, [user]);
 
-  React.useEffect(() => { getDocument("params", "main", setActualPhase) }, []); 
+  React.useEffect(() => { getDocument("params", "main", setActualPhase) }, []);
 
   React.useEffect(() => {
     localStorage.setItem("id", role.id)
@@ -60,6 +61,7 @@ export default function Home() {
           />
         </section>
       </main>
+      <Footer />
     </ProtectedRoute>
   );
 }

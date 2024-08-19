@@ -8,6 +8,7 @@ import { getDataTable } from "@/src/services/firebase";
 import { Question } from "@/components/candidata/Question";
 import { updateDocument } from "@/src/utils/updateDocument";
 import { Snackbar } from "@/components/interface/Snackbar";
+import { Footer } from "@/components/interface/Footer";
 import { sortedQuestions } from "@/src/utils/sortedQuestions";
 import ProtectedRoute from "@/components/interface/ProtectedRoute";
 import { calcularPromedioCalificaciones } from "@/src/utils/calcularPromedioCalificaciones";
@@ -128,6 +129,7 @@ function CandidataName({ params: { id: id } }) {
                     </div>
                 </section>
             </main>
+            <Footer />
         </ProtectedRoute>
     );
 }

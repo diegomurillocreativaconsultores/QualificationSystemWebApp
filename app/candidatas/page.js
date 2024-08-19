@@ -6,6 +6,7 @@ import { db } from "@/firebase";
 import { Header } from "@/components/interface/Header";
 import { collection, getDocs } from "firebase/firestore";
 import { sortByDistrict } from "@/src/utils/sortByDistrict";
+import { Footer } from "@/components/interface/Footer";
 import ProtectedRoute from "@/components/interface/ProtectedRoute";
 import { capitalizeAndRemoveHyphens } from "@/src/utils/capitalizeAndRemoveHyphens";
 
@@ -105,6 +106,7 @@ function CandidatasPage() {
                     </div>
                 </section>
             </main>
+            <Footer />
         </ProtectedRoute>
     );
 }
