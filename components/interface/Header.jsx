@@ -8,11 +8,16 @@ import { TbLogout2 } from "react-icons/tb";
 export const Header = ({ otherComponent = <></> }) => {
     const { user } = useAuth();
 
-    console.log(user);
-
     return (
         <header className="bg-bluebeauty p-5 flex items-center justify-between">
-            <section>
+            <section className="flex items-center space-x-3">
+                <div className="w-20">
+                    <img
+                        src="/creativa-logo.png"
+                        alt="Imagen logo Creativa Studios"
+                        className="rounded"
+                    />
+                </div>
                 <Link
                     href="/"
                     className="font-semibold text-white text-xl"
